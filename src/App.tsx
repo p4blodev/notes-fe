@@ -6,11 +6,15 @@ import useAuth from "./hooks/useAuth";
 
 function App() {
   const { error, auth } = useAuth();
-  console.log("turboCL -> file: App.tsx -> line 9 -> App -> auth", auth);
+  console.log("turboCL -> file: App.tsx -> line 9 -> App -> auth", { ...auth });
+  console.log(
+    "turboCL -> file: App.tsx -> line 9 -> App -> auth.authenticated",
+    auth.authenticated
+  );
   console.log("turboCL -> file: App.tsx -> line 9 -> App -> error", error);
 
   return (
-    <div>
+    <>
       <h1>Notes</h1>
       {auth.authenticated ? (
         <>
@@ -20,7 +24,7 @@ function App() {
       ) : (
         <Login />
       )}
-    </div>
+    </>
   );
 }
 

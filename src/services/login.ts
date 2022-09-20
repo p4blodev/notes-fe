@@ -1,5 +1,5 @@
 import axios from "axios";
-import { credentialsType } from "../models/credentials";
+import { credentialsType } from "../models/credentials.types";
 
 const API_BASE = "http://localhost:3001/api/login";
 

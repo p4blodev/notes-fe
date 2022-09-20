@@ -1,5 +1,5 @@
-import { authType } from "../models/auth";
-import { credentialsType } from "../models/credentials";
+import { authType } from "../models/auth.types";
+import { credentialsType } from "../models/credentials.types";
 
 export type UseAuthType = {
   auth: authType;
