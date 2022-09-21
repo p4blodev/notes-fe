@@ -5,7 +5,6 @@ import { UseGetNotesType } from "./useGetNotes.types";
 import { QueryKeysEnum } from "./QUERY_KEYS";
 
 export default function useGetNotes(): UseGetNotesType {
-  console.log("useGetNotes");
   const { data, error, isLoading } = useQuery<noteType[], string>(
     [QueryKeysEnum.notes],
     getNotes,
