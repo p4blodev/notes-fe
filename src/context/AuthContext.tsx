@@ -10,21 +10,30 @@ const INITIAL_DATA: authType = {
 };
 
 const storedAuth = window.sessionStorage.getItem("auth");
-const authenticaction = storedAuth ? JSON.parse(storedAuth) : INITIAL_DATA;
+const authObj = storedAuth ? JSON.parse(storedAuth) : INITIAL_DATA;
 
 export const AuthContext = React.createContext<AuthContextType>({
-  auth: authenticaction,
+  auth: authObj,
   setAuth: () => null,
+  logout: () => null,
 });
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [auth, setAuth] = useState<authType>(authenticaction);
+  const [auth, setAuth] = useState<authType>(authObj);
 
   useEffect(() => {
     window.sessionStorage.setItem("auth", JSON.stringify(auth));
   }, [auth]);
 
-  const values: AuthContextType = { auth: auth, setAuth: setAuth };
+  const logout = () => {
+    setAuth(INITIAL_DATA);
+  };
+
+  const values: AuthContextType = {
+    auth: auth,
+    setAuth: setAuth,
+    logout: logout,
+  };
 
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
 };

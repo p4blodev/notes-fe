@@ -2,5 +2,6 @@ import { authType } from "../models/auth.types";
 
 export type AuthContextType = {
   auth: authType;
+  logout: () => void;
   setAuth: React.Dispatch<React.SetStateAction<authType>>;
 };

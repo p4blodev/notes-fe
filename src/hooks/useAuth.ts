@@ -6,7 +6,7 @@ import { postLogin } from "../services/login";
 import { UseAuthType } from "./useAuth.types";
 
 export default function useAuth(): UseAuthType {
-  const { auth, setAuth } = useContext<AuthContextType>(AuthContext);
+  const { auth, setAuth, logout } = useContext<AuthContextType>(AuthContext);
 
   const { mutate, error } = useMutation(
     (credentials: credentialsType) => postLogin(credentials),
@@ -20,7 +20,7 @@ export default function useAuth(): UseAuthType {
         setAuth(authentication);
       },
       onError: () => {
-        window.sessionStorage.clear();
+        logout();
       },
     }
   );
@@ -29,5 +29,5 @@ export default function useAuth(): UseAuthType {
     mutate(credentials);
   }
 
-  return { auth, error, login };
+  return { auth, error, login, logout };
 }
