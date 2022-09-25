@@ -14,7 +14,7 @@ export default function Notes() {
   if (error) return <p style={{ color: "red" }}>{`${error} 😢`}</p>;
 
   return (
-    <ul>
+    <ul style={{ listStyleType: "none", marginTop: "2em", padding: 0 }}>
       {notes.map((note) => (
         <Note key={note.id} note={note} />
       ))}

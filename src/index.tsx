@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+import "./App.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import AuthProvider from "./context/AuthContext";
@@ -15,7 +16,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <QueryClientProvider client={queryClient}>
     <AuthProvider>
-      <App />
+      <main className="app-main">
+        <App />
+      </main>
     </AuthProvider>
     <ReactQueryDevtools initialIsOpen={false} />
   </QueryClientProvider>

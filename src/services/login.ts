@@ -1,7 +1,9 @@
 import axios from "axios";
 import { credentialsType } from "../models/credentials.types";
 
-const API_BASE = "http://localhost:3001/api/login";
+const API_BASE = "https://stormy-brook-97359.herokuapp.com/api/login";
+
+//const API_BASE = "http://localhost:3001/api/login";
 
 export const postLogin = (credentials: credentialsType) => {
   return axios
@@ -10,6 +12,6 @@ export const postLogin = (credentials: credentialsType) => {
       return response.data;
     })
     .catch((error) => {
-      throw new Error(error.response.data.error);
+      throw new Error(error.message);
     });
 };

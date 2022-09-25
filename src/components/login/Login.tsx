@@ -1,10 +1,12 @@
 import { useState } from "react";
-import useAuth from "../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
+import Message from "../message/Message";
+import "./Login.css";
 
 export default function Login() {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const { login } = useAuth();
+  const { login, error } = useAuth();
 
   const onChangeUsername = (event: React.FormEvent<HTMLInputElement>) => {
     setUsername(event.currentTarget.value);
@@ -21,36 +23,48 @@ export default function Login() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
+    <form className="login-container" onSubmit={handleSubmit}>
+      <div className="login-items">
         <label>
           Username
           <div>
             <input
+              className="login-input"
               name="username"
               onChange={onChangeUsername}
-              placeholder="Enter ypour user name"
+              placeholder="Enter your user name"
               type="text"
               value={username}
             />
           </div>
         </label>
       </div>
-      <div>
+      <div className="login-items">
         <label>
-          Username
+          Password
           <div>
             <input
-              name="username"
+              className="login-input"
+              name="password"
               onChange={onChangePassword}
-              placeholder="Enter ypour user name"
+              placeholder="Enter your password"
               type="password"
               value={password}
             />
           </div>
         </label>
       </div>
-      <button type="submit">Login</button>
+      <div className="login-items">
+        <button className="button-12" type="submit">
+          Login
+        </button>
+      </div>
+
+      {error ? (
+        <Message>
+          <>⚠ Invalid credentials</>
+        </Message>
+      ) : null}
     </form>
   );
 }

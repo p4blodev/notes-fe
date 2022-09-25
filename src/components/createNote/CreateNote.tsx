@@ -1,5 +1,6 @@
 import { useState } from "react";
-import useCreateNote from "../hooks/useCreateNote";
+import useCreateNote from "../../hooks/useCreateNote";
+import "./CreateNote.css";
 
 export default function CreateNote() {
   const { createNote, error } = useCreateNote();
@@ -16,8 +17,17 @@ export default function CreateNote() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" value={note} onChange={onChangeInput} />
-      <button>Add</button>
+      <div className="create-note-input-container">
+        <input
+          className="create-note-input"
+          type="text"
+          value={note}
+          onChange={onChangeInput}
+        />
+      </div>
+      <div className="create-note-button-container">
+        <button className="button-13">Add</button>
+      </div>
       {error && <span style={{ color: "red" }}>{`${error} 😢`}</span>}
     </form>
   );
