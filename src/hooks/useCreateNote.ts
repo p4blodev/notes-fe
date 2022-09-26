@@ -9,8 +9,7 @@ export default function useCreateNote(): UseCreateNoteType {
     async (note: noteType) => await postNote(note),
     {
       onSuccess: async (newNote: noteType) => {
-        const prevNotes =
-          queryClient.getQueryData<noteType[]>(['notes']) != null || [];
+        const prevNotes = queryClient.getQueryData<noteType[]>(['notes']) ?? [];
 
         queryClient.setQueryData<noteType[]>(
           ['notes'],
