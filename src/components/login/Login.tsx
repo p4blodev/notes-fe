@@ -1,11 +1,11 @@
-import { useState } from "react";
-import useAuth from "../../hooks/useAuth";
-import Message from "../message/Message";
-import "./Login.css";
+import { useState } from 'react';
+import useAuth from '../../hooks/useAuth';
+import Message from '../message/Message';
+import './Login.css';
 
 export default function Login() {
-  const [username, setUsername] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+  const [username, setUsername] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
   const { login, error } = useAuth();
 
   const onChangeUsername = (event: React.FormEvent<HTMLInputElement>) => {

@@ -1,15 +1,15 @@
-import { useContext } from "react";
-import { AuthContext, AuthContextType } from "../context";
-import { useMutation } from "@tanstack/react-query";
-import { credentialsType } from "../models/credentials.types";
-import { postLogin } from "../services/login";
-import { UseAuthType } from "./useAuth.types";
+import { useContext } from 'react';
+import { AuthContext, AuthContextType } from '../context';
+import { useMutation } from '@tanstack/react-query';
+import { credentialsType } from '../models/credentials.types';
+import { postLogin } from '../services/login';
+import { UseAuthType } from './useAuth.types';
 
 export default function useAuth(): UseAuthType {
   const { auth, setAuth, logout } = useContext<AuthContextType>(AuthContext);
 
   const { mutate, error } = useMutation(
-    (credentials: credentialsType) => postLogin(credentials),
+    async (credentials: credentialsType) => await postLogin(credentials),
     {
       onSuccess: (data) => {
         const authentication = {
@@ -22,7 +22,7 @@ export default function useAuth(): UseAuthType {
       onError: () => {
         logout();
       },
-    }
+    },
   );
 
   function login(credentials: credentialsType) {

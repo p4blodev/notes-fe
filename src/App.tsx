@@ -1,11 +1,8 @@
-import { CreateNote } from "./components/createNote";
-import Login from "./components/login/Login";
-import "./App.css";
-import Notes from "./components/Notes";
-import useAuth from "./hooks/useAuth";
-import Title from "./components/Title";
+import { CreateNote, Notes, Login, Title } from './components';
+import './App.css';
+import useAuth from './hooks/useAuth';
 
-function App() {
+function App(): JSX.Element {
   const { auth } = useAuth();
 
   return (

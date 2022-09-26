@@ -1,12 +1,12 @@
-import axios from "axios";
-import { credentialsType } from "../models/credentials.types";
+import axios from 'axios';
+import { credentialsType } from '../models/credentials.types';
 
-const API_BASE = "https://stormy-brook-97359.herokuapp.com/api/login";
+const API_BASE = 'https://stormy-brook-97359.herokuapp.com/api/login';
 
-//const API_BASE = "http://localhost:3001/api/login";
+// const API_BASE = "http://localhost:3001/api/login";
 
-export const postLogin = (credentials: credentialsType) => {
-  return axios
+export const postLogin = async (credentials: credentialsType) => {
+  return await axios
     .post(API_BASE, credentials)
     .then((response) => {
       return response.data;

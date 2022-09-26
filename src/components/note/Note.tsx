@@ -1,6 +1,6 @@
-import { noteType } from "../models/note.type";
-import useUpdateNote from "../hooks/useUpdateNote";
-import "./Note.css";
+import { noteType } from '../../models/note.type';
+import useUpdateNote from '../../hooks/useUpdateNote';
+import './Note.css';
 
 export default function Note({ note }: { note: noteType }) {
   const { changeImportant } = useUpdateNote();
@@ -13,17 +13,17 @@ export default function Note({ note }: { note: noteType }) {
 
   return (
     <li className="note">
-      {note.date && (
+      {note.date != null && (
         <header className="header-note">
           <time>{new Date(note.date).toDateString()}</time>
-          <span>{` - ${note.important ? "🚦" : "🚥"}`}</span>
+          <span>{` - ${note.important ? '🚦' : '🚥'}`}</span>
         </header>
       )}
       <p> {note.content}</p>
       <hr className="divider" />
       <div>
         <button className="note-button" onClick={toggleImportant}>
-          {note.important ? "🚥" : "🚦"}
+          {note.important ? '🚥' : '🚦'}
         </button>
         <button className="note-button" onClick={handleDelete}>
           ❌

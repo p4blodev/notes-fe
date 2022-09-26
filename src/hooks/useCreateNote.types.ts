@@ -1,7 +1,7 @@
-import { noteType } from "../models/note.type";
+import { noteType } from '../models/note.type';
 
-export type UseCreateNoteType = {
+export interface UseCreateNoteType {
   createNote: (note: string) => void;
   error: string | null;
   newNote?: noteType;
-};
+}
